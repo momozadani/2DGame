@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://src/core/resources/data_weapons.gd" id="1_1qn00"]
+[ext_resource type="Texture2D" path="res://src/weapons/ATL_WEapons.tres" id="1_qwvmq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8emxf"]
+atlas = ExtResource("1_qwvmq")
+region = Rect2(192, 96, 48, 48)
+
+[resource]
+script = ExtResource("1_1qn00")
+id = 43
+name = "tornado"
+full_name = "Tornado"
+description = "Ein kleiner Tornado, der deine Feinde erfasst und leichten Schaden verursacht."
+price = 500
+icon = SubResource("AtlasTexture_8emxf")
+level = 1
+max_count = 1
+damage = 30
+targets = 2
+attack_range = 1000
+attack_speed = 1.5
+repeat = 0
+delay = 0.0
+is_fixed = true
+terrain_bounce = false
+is_random_dir = true
+pattern = 0
+_deviation = 0
+projectile_speed = 1000
+size_multiplier = 0.8
+bounces = 10
+pierce = 9
+return_to_player = false
+count = 1
+color = Color(1, 1, 1, 1)
+is_rotating = false
+rotation_speed = 1
+sprite_scale = 4.0
+hitbox_scale = 2.0
+animations = "tornado"

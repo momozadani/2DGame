@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/game/inventory_grid/inventory_grid.gd" id="1_y2y4l"]
+[ext_resource type="PackedScene" path="res://src/game/inventory_grid/UC_InventoryGridEntry.tscn" id="2_g2ltt"]
+
+[node name="InventoryGrid" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y2y4l")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 6
+
+[node name="InventoryGridEntry" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry2" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry3" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry4" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry5" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry6" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry7" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry8" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry9" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry10" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry11" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry12" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry13" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry14" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry15" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry16" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry17" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry18" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry19" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry20" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry21" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry22" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry23" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2
+
+[node name="InventoryGridEntry24" parent="GridContainer" instance=ExtResource("2_g2ltt")]
+layout_mode = 2

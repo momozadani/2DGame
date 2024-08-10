@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://editor/tool_position_generator.gd" id="1_kvncy"]
+[ext_resource type="PackedScene" path="res://src/maps/Map_01.tscn" id="1_u6w5t"]
+[ext_resource type="Resource" path="res://src/enemies/patterns/SpawnPattern_Range300.tres" id="2_8rb2g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fckpe"]
+radius = 250.0
+
+[node name="ToolPositionGenerator" type="Node" node_paths=PackedStringArray("map")]
+script = ExtResource("1_kvncy")
+map = NodePath("Map")
+spread = 75
+get_max_points = true
+pattern = ExtResource("2_8rb2g")
+size = 250
+
+[node name="Map" parent="." instance=ExtResource("1_u6w5t")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="Area2D"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_fckpe")
+
+[node name="Offsets" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="@Marker2D@26882" type="Marker2D" parent="Offsets"]
+position = Vector2(-160.254, -190.412)
+
+[node name="@Marker2D@26883" type="Marker2D" parent="Offsets"]
+position = Vector2(-38.6399, -133.383)
+
+[node name="@Marker2D@26884" type="Marker2D" parent="Offsets"]
+position = Vector2(-25.8729, 113.703)
+
+[node name="@Marker2D@26885" type="Marker2D" parent="Offsets"]
+position = Vector2(59.7201, 78.4903)
+
+[node name="@Marker2D@26886" type="Marker2D" parent="Offsets"]
+position = Vector2(-51.2356, 34.0466)
+
+[node name="@Marker2D@26887" type="Marker2D" parent="Offsets"]
+position = Vector2(197.159, -59.4974)
+
+[node name="@Marker2D@26888" type="Marker2D" parent="Offsets"]
+position = Vector2(75.8798, -230.154)
+
+[node name="@Marker2D@26889" type="Marker2D" parent="Offsets"]
+position = Vector2(-170.101, 85.9913)
+
+[node name="@Marker2D@26890" type="Marker2D" parent="Offsets"]
+position = Vector2(168.984, 120.063)
+
+[node name="@Marker2D@26891" type="Marker2D" parent="Offsets"]
+position = Vector2(36.1977, -65.6529)
+
+[node name="@Marker2D@26892" type="Marker2D" parent="Offsets"]
+position = Vector2(-109.559, 205.502)
+
+[node name="@Marker2D@26893" type="Marker2D" parent="Offsets"]
+position = Vector2(-132.439, -37.8505)
+
+[node name="@Marker2D@26894" type="Marker2D" parent="Offsets"]
+position = Vector2(-76.0495, -214.406)
+
+[node name="@Marker2D@26895" type="Marker2D" parent="Offsets"]
+position = Vector2(24.0645, 8.83879)
+
+[node name="@Marker2D@26896" type="Marker2D" parent="Offsets"]
+position = Vector2(-150.794, -112.585)
+
+[node name="@Marker2D@26897" type="Marker2D" parent="Offsets"]
+position = Vector2(165.305, -151.497)
+
+[node name="@Marker2D@26898" type="Marker2D" parent="Offsets"]
+position = Vector2(137.999, 20.9151)
+
+[node name="@Marker2D@26899" type="Marker2D" parent="Offsets"]
+position = Vector2(-220.355, -47.434)
+
+[node name="@Marker2D@26900" type="Marker2D" parent="Offsets"]
+position = Vector2(93.9753, -116.332)
+
+[node name="@Marker2D@26901" type="Marker2D" parent="Offsets"]
+position = Vector2(143.529, 191.42)
+
+[node name="@Marker2D@26902" type="Marker2D" parent="Offsets"]
+position = Vector2(59.2243, 215.424)
+
+[node name="@Marker2D@26903" type="Marker2D" parent="Offsets"]
+position = Vector2(-240.619, 55.255)
+
+[node name="@Marker2D@26904" type="Marker2D" parent="Offsets"]
+position = Vector2(-35.9289, -43.2046)
+
+[node name="@Marker2D@26905" type="Marker2D" parent="Offsets"]
+position = Vector2(228.17, 9.86902)
+
+[node name="@Marker2D@26906" type="Marker2D" parent="Offsets"]
+position = Vector2(-33.5102, 195.615)
+
+[node name="@Marker2D@26907" type="Marker2D" parent="Offsets"]
+position = Vector2(7.6297, -196.868)

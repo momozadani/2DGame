@@ -1,0 +1,6 @@
+services:
+  godot-export:
+    build: ../Game/
+    command: godot --headless --export-debug Main
+    volumes:
+      - ../Backend/codenameb/src/main/resources/static/:/home/godot/project/build/

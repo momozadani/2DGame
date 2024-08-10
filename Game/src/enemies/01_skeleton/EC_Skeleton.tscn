@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://src/enemies/EnemyBase.tscn" id="1_0lgg5"]
+[ext_resource type="PackedScene" path="res://src/enemies/01_skeleton/EC_Skeleton_AnimationRig.tscn" id="2_y04a8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2kpjp"]
+radius = 19.0
+height = 76.0
+
+[node name="EnemyBase" node_paths=PackedStringArray("animation_rig") instance=ExtResource("1_0lgg5")]
+animation_rig = NodePath("EnemyCharacterAnimationRig")
+
+[node name="Enemy Collis" parent="." index="0"]
+visible = true
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2kpjp")
+
+[node name="EnemyController" parent="." index="3" node_paths=PackedStringArray("start_state", "character")]
+start_state = NodePath("EnemyIdleState")
+character = NodePath("..")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+visible = false
+
+[node name="Debug" parent="." index="5" node_paths=PackedStringArray("base")]
+base = NodePath("..")
+
+[node name="EnemyCharacterAnimationRig" parent="." index="6" instance=ExtResource("2_y04a8")]

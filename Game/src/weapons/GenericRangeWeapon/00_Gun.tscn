@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://src/weapons/WeaponBase.tscn" id="1_4ect6"]
+[ext_resource type="Script" path="res://src/core/resources/weapon_data.gd" id="2_bbpdo"]
+[ext_resource type="Texture2D" path="res://_developer/pascal/assets/SPR_Revolver.png" id="3_j7c83"]
+[ext_resource type="Script" path="res://src/core/components/projectile_emitter.gd" id="4_6dlhw"]
+
+[sub_resource type="Resource" id="Resource_vm5tf"]
+script = ExtResource("2_bbpdo")
+id = 0
+name = ""
+full_name = ""
+description = ""
+damage = 10
+attack_speed = 1.0
+cooldown = 0.0
+attack_range = 400.0
+targets = 1
+count = 1
+is_fixed = false
+pattern = 0
+deviation = 0
+projectile_speed = 600
+size_multiplier = 1.0
+bounces = 0
+pierce = 0
+return_to_player = false
+
+[node name="WeaponBase" node_paths=PackedStringArray("aim_range", "audio_player") instance=ExtResource("1_4ect6")]
+data = SubResource("Resource_vm5tf")
+aim_range = NodePath("Range")
+audio_player = NodePath("Sfx")
+
+[node name="Sprite2D" type="Sprite2D" parent="RotationPoint" index="0"]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(16, -6)
+scale = Vector2(0.135071, 0.135071)
+texture = ExtResource("3_j7c83")
+flip_h = true
+
+[node name="ProjectileEmitter" type="Marker2D" parent="RotationPoint/Sprite2D" index="0"]
+position = Vector2(192.491, 7.40351)
+script = ExtResource("4_6dlhw")
+
+[connection signal="shot" from="." to="RotationPoint/Sprite2D/ProjectileEmitter" method="_on_weapon_base_shot"]

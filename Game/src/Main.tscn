@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://vwcvnchwhvxw"]
+
+[ext_resource type="Script" path="res://src/main.gd" id="1"]
+[ext_resource type="Script" path="res://src/app/connection/javascript_bridge_wrapper.gd" id="2_otocj"]
+[ext_resource type="Script" path="res://src/app/connection/web_socket_client.gd" id="2_sv0p0"]
+[ext_resource type="PackedScene" uid="uid://d5rihclnkyj" path="res://src/app/UI_DEBUG_LobbyMenu.tscn" id="4_1mkrm"]
+[ext_resource type="PackedScene" path="res://src/app/UI_Log.tscn" id="5_xmc0q"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("_client", "_bridge", "_ui_lobby")]
+script = ExtResource("1")
+_client = NodePath("WebSocketClient")
+_bridge = NodePath("JavaScriptBridgeWrapper")
+_ui_lobby = NodePath("CanvasLayer/DebugLobbyMenu")
+
+[node name="JavaScriptBridgeWrapper" type="Node" parent="."]
+script = ExtResource("2_otocj")
+
+[node name="WebSocketClient" type="Node" parent="."]
+script = ExtResource("2_sv0p0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 99
+
+[node name="DebugLobbyMenu" parent="CanvasLayer" node_paths=PackedStringArray("web_socket_client", "js_bridge") instance=ExtResource("4_1mkrm")]
+web_socket_client = NodePath("../../WebSocketClient")
+js_bridge = NodePath("../../JavaScriptBridgeWrapper")
+
+[node name="Log" parent="CanvasLayer" instance=ExtResource("5_xmc0q")]
+visible = false
+offset_left = -693.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 14

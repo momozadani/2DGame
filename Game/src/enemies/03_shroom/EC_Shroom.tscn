@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://src/enemies/EnemyBase.tscn" id="1_oish6"]
+[ext_resource type="Script" path="res://src/enemies/components/enemy_character_animation_rig.gd" id="2_dd0bw"]
+[ext_resource type="Shader" path="res://src/shared/shader/M_Character.gdshader" id="3_kovgl"]
+[ext_resource type="SpriteFrames" path="res://src/enemies/03_shroom/SPR_Shroom.tres" id="4_1p7fu"]
+[ext_resource type="AnimationLibrary" path="res://src/enemies/animations/ALIB_EnemyAnimations.tres" id="5_a20ui"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ifkc"]
+resource_local_to_scene = true
+shader = ExtResource("3_kovgl")
+shader_parameter/quanitity = null
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/is_rotation = false
+shader_parameter/speed = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_86o1q"]
+radius = 16.0
+height = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dg570"]
+radius = 25.0
+
+[node name="EnemyBase" node_paths=PackedStringArray("animation_rig") instance=ExtResource("1_oish6")]
+animation_rig = NodePath("EnemyCharacterAnimationRig")
+
+[node name="EnemyCharacterAnimationRig" type="Node2D" parent="." index="0"]
+script = ExtResource("2_dd0bw")
+
+[node name="Pivot" type="Marker2D" parent="EnemyCharacterAnimationRig" index="0"]
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="EnemyCharacterAnimationRig/Pivot" index="0"]
+unique_name_in_owner = true
+texture_filter = 1
+material = SubResource("ShaderMaterial_1ifkc")
+position = Vector2(0, -62)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("4_1p7fu")
+animation = &"south"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EnemyCharacterAnimationRig" index="1"]
+unique_name_in_owner = true
+reset_on_save = false
+root_node = NodePath("../..")
+libraries = {
+"": ExtResource("5_a20ui")
+}
+
+[node name="Enemy Collis" parent="." index="1"]
+visible = true
+position = Vector2(0, -5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_86o1q")
+
+[node name="EnemyController" parent="." index="4" node_paths=PackedStringArray("start_state", "character")]
+start_state = NodePath("EnemyIdleState")
+character = NodePath("..")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_dg570")
+
+[node name="Debug" parent="." index="6" node_paths=PackedStringArray("base")]
+base = NodePath("..")

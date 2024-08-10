@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://blaj561uawi8v"]
+
+[ext_resource type="Script" path="res://src/core/entities/bullet.gd" id="1_7hhyy"]
+[ext_resource type="SpriteFrames" uid="uid://d17c7jb8m8cmc" path="res://src/weapons/SPR_Animations.tres" id="3_8w0hc"]
+[ext_resource type="Shader" path="res://src/shared/shader/M_Character.gdshader" id="3_g2ll7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q10bu"]
+radius = 34.5905
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6u46l"]
+resource_local_to_scene = true
+shader = ExtResource("3_g2ll7")
+shader_parameter/quanitity = null
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/is_rotation = false
+shader_parameter/speed = 8.0
+
+[node name="BulletBase" type="Area2D" groups=["Projectile"]]
+z_index = 99
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_7hhyy")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_q10bu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 999
+material = SubResource("ShaderMaterial_6u46l")
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_8w0hc")
+animation = &"sword"
+autoplay = "default"
+frame_progress = 0.365635
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

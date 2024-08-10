@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://src/core/resources/data_weapons.gd" id="1_jwbfw"]
+[ext_resource type="Texture2D" path="res://src/weapons/ATL_WEapons.tres" id="1_xtww1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws4yt"]
+atlas = ExtResource("1_xtww1")
+region = Rect2(288, 48, 48, 48)
+
+[resource]
+script = ExtResource("1_jwbfw")
+id = 20
+name = "bats"
+full_name = "Blutsauger"
+description = "Ein größerer Schwarm Blutsauger, der deine Gegner umzingelt und erheblichen Schaden zufügt."
+price = 0
+icon = SubResource("AtlasTexture_ws4yt")
+level = 2
+max_count = 1
+damage = 4
+targets = 1
+attack_range = 2000
+attack_speed = 1.8
+repeat = 0
+delay = 0.0
+is_fixed = false
+terrain_bounce = true
+is_random_dir = false
+pattern = 0
+_deviation = 0
+projectile_speed = 600
+size_multiplier = 1.0
+bounces = 4
+pierce = 1
+return_to_player = true
+count = 3
+color = Color(1, 1, 1, 1)
+is_rotating = false
+rotation_speed = 1
+sprite_scale = 4.0
+hitbox_scale = 2.0
+animations = "bat"

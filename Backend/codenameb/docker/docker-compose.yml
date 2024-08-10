@@ -1,0 +1,11 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    container_name: cod_db
+    environment:
+      POSTGRES_DB: cod_db
+      POSTGRES_USER: cod_user
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"

@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://cy53ik2ky7jlj"]
+
+[ext_resource type="Script" path="res://src/core/entities/enemy_character.gd" id="1_8tmpy"]
+[ext_resource type="Script" path="res://src/core/components/health.gd" id="3_6miec"]
+[ext_resource type="AudioStream" uid="uid://dt0m1idkgryhi" path="res://_developer/_sound/sfx/Enemy_Hurt.wav" id="6_j5x67"]
+[ext_resource type="PackedScene" uid="uid://ccqcxxs0ynhf7" path="res://src/enemies/controller/behaviors/Behavior_FollowPlayer.tscn" id="6_n8260"]
+[ext_resource type="SpriteFrames" uid="uid://d17c7jb8m8cmc" path="res://src/weapons/SPR_Animations.tres" id="7_eao8w"]
+[ext_resource type="Script" path="res://src/enemies/components/hitbox.gd" id="7_qyxhq"]
+[ext_resource type="Script" path="res://src/core/components/navigation.gd" id="7_spu43"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qo0kn"]
+radius = 33.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cchdf"]
+radius = 25.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_i1mvb"]
+font_size = 40
+
+[sub_resource type="GDScript" id="GDScript_xheg5"]
+script/source = "extends Label
+
+@export var base: EnemyCharacter
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	base.direction.value_changed.connect(func (vector: Vector2, ass): text = str(vector,\"|\",vector.abs().max_axis_index()))
+	
+"
+
+[node name="EnemyBase" type="CharacterBody2D" groups=["Enemy", "Entities"]]
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_8tmpy")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_qo0kn")
+metadata/_edit_lock_ = true
+
+[node name="Health" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_6miec")
+
+[node name="Navigation" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_spu43")
+deadzone = 22
+
+[node name="EnemyController" parent="." node_paths=PackedStringArray("start_state", "character") instance=ExtResource("6_n8260")]
+start_state = NodePath("EnemyIdleState")
+character = NodePath("..")
+
+[node name="HitBox" type="Area2D" parent="."]
+scale = Vector2(0.8, 0.8)
+collision_layer = 0
+monitorable = false
+script = ExtResource("7_qyxhq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -25)
+shape = SubResource("CircleShape2D_cchdf")
+
+[node name="Debug" type="Label" parent="." node_paths=PackedStringArray("base")]
+visible = false
+offset_top = -100.0
+offset_right = 40.0
+offset_bottom = -77.0
+label_settings = SubResource("LabelSettings_i1mvb")
+script = SubResource("GDScript_xheg5")
+base = NodePath("..")
+
+[node name="SfxDeath" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_j5x67")
+volume_db = -3.325
+bus = &"Sfx"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("7_eao8w")
+animation = &"portal"
+
+[connection signal="body_entered" from="HitBox" to="HitBox" method="_on_body_entered"]
+[connection signal="body_exited" from="HitBox" to="HitBox" method="_on_body_exited"]

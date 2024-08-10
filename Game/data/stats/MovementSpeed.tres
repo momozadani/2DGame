@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="StatData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/core/resources/stat_data.gd" id="1_g77bw"]
+[ext_resource type="Texture2D" path="res://src/art/icons/ATL_Icons.tres" id="1_vmpus"]
+
+[resource]
+script = ExtResource("1_g77bw")
+_id = 6
+_name = &"Movement Speed"
+_short_name = &"MS"
+_description = "Movement Speed"
+_hidden = false
+_negativ_is_good = false
+_value_cap = 1000.0
+_icon = ExtResource("1_vmpus")
